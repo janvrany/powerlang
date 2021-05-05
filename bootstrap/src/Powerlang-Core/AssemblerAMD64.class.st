@@ -649,8 +649,9 @@ AssemblerAMD64 >> or: op1 with: op2 [
 ]
 
 { #category : #private }
-AssemblerAMD64 >> pop: op1 [
-	self assemble: 'pop' with: op1
+AssemblerAMD64 >> pop: dstReg [
+	self assemble: 'pop' with: dstReg
+
 ]
 
 { #category : #private }
@@ -660,8 +661,9 @@ AssemblerAMD64 >> printOn: aStream [
 ]
 
 { #category : #accessing }
-AssemblerAMD64 >> push: op1 [
-	self assemble: 'push' with: op1
+AssemblerAMD64 >> push: srcReg [
+	self assemble: 'push' with: srcReg
+
 ]
 
 { #category : #storing }
