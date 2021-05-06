@@ -362,14 +362,14 @@ JITAssemblerAMD64 >> convertTtoNativeInteger [
 ]
 
 { #category : #jumps }
-JITAssemblerAMD64 >> dec: op1 [
-	self assemble: 'dec' with: op1
+JITAssemblerAMD64 >> dec: srcAndDstReg [
+	backend addImm: -1 to: srcAndDstReg
+
 ]
 
 { #category : #arithmetic }
 JITAssemblerAMD64 >> decR [
-	self assemble: 'dec' with: backend regR
-]
+	self dec: backend regR
 
 ]
 
@@ -437,12 +437,14 @@ JITAssemblerAMD64 >> ensureSafeRintegerBit [
 
 { #category : #arithmetic }
 JITAssemblerAMD64 >> incA [
-	self assemble: 'inc' with: backend regA
+	backend addImm: 1 to: backend regA
+
 ]
 
 { #category : #arithmetic }
 JITAssemblerAMD64 >> incC [
-	self assemble: 'inc' with: backend regC
+	backend addImm: 1 to: backend regC
+
 ]
 
 { #category : #private }
@@ -1454,8 +1456,9 @@ JITAssemblerAMD64 >> loop: aBlock times: anInteger [
 { #category : #jumps }
 JITAssemblerAMD64 >> loopTo: label [
 	self
-		assemble: 'dec' with: backend regT;
+		dec: backend regT;
 		jumpIfNotZeroTo: label
+
 ]
 
 { #category : #jumps }
