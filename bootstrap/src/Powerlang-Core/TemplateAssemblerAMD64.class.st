@@ -393,12 +393,6 @@ TemplateAssemblerAMD64 >> ensureSafeRintegerBit [
 	
 ]
 
-{ #category : #loading }
-TemplateAssemblerAMD64 >> exchangeRindirectWithT [
-	self assembleBytes: #[16r48 16r87 16r8].
-	
-]
-
 { #category : #arithmetic }
 TemplateAssemblerAMD64 >> incA [
 	self assembleBytes: #[16r48 16rFF 16rC2].
@@ -1091,12 +1085,6 @@ TemplateAssemblerAMD64 >> loadZeroExtendByteRwithSPatA [
 { #category : #integers }
 TemplateAssemblerAMD64 >> loadZeroExtendLongRwithRatA [
 	self assembleBytes: #[16r8B 16r44 16r90 16rFC].
-	
-]
-
-{ #category : #arithmetic }
-TemplateAssemblerAMD64 >> lock [
-	self assembleBytes: #[16rF0].
 	
 ]
 

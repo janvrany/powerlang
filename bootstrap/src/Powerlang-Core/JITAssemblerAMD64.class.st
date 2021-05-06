@@ -371,10 +371,6 @@ JITAssemblerAMD64 >> decR [
 	self assemble: 'dec' with: backend regR
 ]
 
-{ #category : #private }
-JITAssemblerAMD64 >> decRindirect [
-	pointer reset; length: self addressLength; base: backend regR.
-	self assemble: 'dec' with: pointer
 ]
 
 { #category : #services }
@@ -437,12 +433,6 @@ JITAssemblerAMD64 >> ensureRintegerBit [
 { #category : #integers }
 JITAssemblerAMD64 >> ensureSafeRintegerBit [
 	self assemble: 'or' with: al with: 1
-]
-
-{ #category : #loading }
-JITAssemblerAMD64 >> exchangeRindirectWithT [
-	pointer reset; length: self addressLength; base: backend regR.
-	self assemble: 'xchg' with: pointer with: backend regT
 ]
 
 { #category : #arithmetic }
@@ -1450,11 +1440,6 @@ JITAssemblerAMD64 >> loadZeroExtendShortRwithRoffset: offset [
 		base: backend regR;
 		displacement: offset.
 	self assemble: 'movzx' with: backend regR with: pointer
-]
-
-{ #category : #arithmetic }
-JITAssemblerAMD64 >> lock [
-	self assembleByte: 16rF0
 ]
 
 { #category : #jumps }

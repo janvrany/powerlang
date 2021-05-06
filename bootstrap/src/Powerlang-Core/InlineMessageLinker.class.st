@@ -230,19 +230,6 @@ InlineMessageLinker >> assembleBitShiftRight [
 ]
 
 { #category : #'private - assemble' }
-InlineMessageLinker >> assembleBusyWait [
-	| loop |
-	#_busyWait.
-	loop := assembler newLabel.
-	assembler
-		loadTwithImmediate: 0;
-		@ loop;
-		exchangeRindirectWithT;
-		compareTwithImmediate: 0;
-		shortJumpIfEqualTo: loop
-]
-
-{ #category : #'private - assemble' }
 InlineMessageLinker >> assembleByteAt [
 	| nonInteger |
 	#_byteAt:.
@@ -598,14 +585,6 @@ InlineMessageLinker >> assembleQuotientTowardZero [
 		loadTwithA;
 		divideRbyT;
 		convertRtoSmallInteger
-]
-
-{ #category : #'private - assemble' }
-InlineMessageLinker >> assembleRelease [
-	#_release.
-	assembler
-		lock;
-		decRindirect
 ]
 
 { #category : #'private - assemble' }
