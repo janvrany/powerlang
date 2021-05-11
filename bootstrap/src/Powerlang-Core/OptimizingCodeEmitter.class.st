@@ -29,21 +29,6 @@ OptimizingCodeEmitter class >> new [
 	^self basicNew initialize
 ]
 
-{ #category : #unclassified }
-OptimizingCodeEmitter class >> supported [
-	| proto |
-
-	proto := self basicNew.
-	proto initializeAssemblers.
-	^ (proto assemblers values collect: [ :e | e -> (#assemble , e , #'Constant:') ]) ,
-	  (proto assemblers values collect: [ :e | e -> (#assemble , e , #':') ])  
-
-	"
-	self supported
-	"
-
-]
-
 { #category : #accessing }
 OptimizingCodeEmitter >> abi: anAbi [
 	abi := anAbi.
@@ -716,11 +701,6 @@ OptimizingCodeEmitter >> assembleTransferControlTo: instruction [
 	(activation savesPreviousSelf and: [activation hasFrame])
 		ifTrue: [assembler popS].
 	assembler restoreCallerFrame; jumpToMindex: 1
-]
-
-{ #category : #accessing }
-OptimizingCodeEmitter >> assemblers [
-	^ assemblers
 ]
 
 { #category : #unclassified }

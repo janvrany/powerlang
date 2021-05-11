@@ -20,16 +20,6 @@ OptimizingInstructionFragmenter class >> new [
 ]
 
 { #category : #unclassified }
-OptimizingInstructionFragmenter class >> supported [
-	^ self selectors select: [:e | e startsWith: 'fragment' ] thenCollect: [ :e | e -> e ]
-
-	"
-	self supported
-	"
-
-]
-
-{ #category : #unclassified }
 OptimizingInstructionFragmenter >> abi: anAbi [
 	abi := anAbi
 ]
