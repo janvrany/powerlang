@@ -12,6 +12,21 @@ Class {
 }
 
 { #category : #unclassified }
+OptimizingBlockInliner class >> inliners [
+	^#(ifTrue: ifFalse: ifTrue:ifFalse: ifFalse:ifTrue: and: or: to:do: whileTrue:)
+]
+
+{ #category : #unclassified }
+OptimizingBlockInliner class >> supported [
+	^ self inliners collect: [ :e | e -> (#inline , e capitalized , ':in:') ]
+
+	"
+	OptimizingBlockInliner supported
+	"
+
+]
+
+{ #category : #unclassified }
 OptimizingBlockInliner >> doInline [
 	self inlineInnerBlocksOf: firstBlock
 ]
@@ -165,7 +180,8 @@ OptimizingBlockInliner >> inlineWhileTrue: message in: block [
 
 { #category : #unclassified }
 OptimizingBlockInliner >> inliners [
-	^#(ifTrue: ifFalse: ifTrue:ifFalse: ifFalse:ifTrue: and: or: to:do: whileTrue:)
+	^ self class inliners
+
 ]
 
 { #category : #unclassified }
