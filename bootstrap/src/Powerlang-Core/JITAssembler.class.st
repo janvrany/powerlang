@@ -8,27 +8,27 @@ Class {
 	#category : #'Powerlang-Core-Assembler'
 }
 
-{ #category : #storing }
+{ #category : #'operations - arithmetic' }
 JITAssembler >> add: source1 to: source2andDest [
 	self subclassResponsibility
 ]
 
-{ #category : #storing }
+{ #category : #'operations - arithmetic' }
 JITAssembler >> addImm: imm to: dest [
 	self subclassResponsibility
 ]
 
-{ #category : #storing }
+{ #category : #'operations - logical' }
 JITAssembler >> and: source1andDest with: source2 [
 	self subclassResponsibility
 ]
 
-{ #category : #storing }
+{ #category : #'operations - logical' }
 JITAssembler >> and: source1andDest withImm: imm [
 	self subclassResponsibility
 ]
 
-{ #category : #storing }
+{ #category : #'operations - logical' }
 JITAssembler >> andIndirect: source1andDest withImm: imm [
 	self subclassResponsibility
 ]
@@ -72,6 +72,12 @@ JITAssembler >> load: dstReg fromBase: baseReg offsetImm: offsetInBytes index: i
 
 { #category : #services }
 JITAssembler >> move: srcReg to: dstReg [
+	^ self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> or: src1AndDst with: src2 [
 	^ self subclassResponsibility
 
 ]
@@ -223,6 +229,42 @@ JITAssembler >> regV [
 
 ]
 
+{ #category : #'operations - logical' }
+JITAssembler >> shiftLeft: srcAndDst by: shamt [
+	self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> shiftLeft: srcAndDst byImm: shamtImm [
+	self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> shiftRight: srcAndDst by: shamt [
+	self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> shiftRight: srcAndDst byImm: shamtImm [
+	self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> shiftRightArithmetic: srcAndDst by: shamt [
+	self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> shiftRightArithmetic: srcAndDst byImm: shamtImm [
+	self subclassResponsibility
+
+]
+
 { #category : #storing }
 JITAssembler >> store: srcReg intoBase: baseReg index: indexReg [
 	self store: srcReg intoBase: baseReg offsetImm: 0 - wordSize index: indexReg scaleImm: wordSize
@@ -251,6 +293,18 @@ JITAssembler >> store: srcReg intoBase: baseReg offsetImm: offsetInBytes index: 
 
 		EA := baseReg + offsetInBytes + ((indexReg - 1) * scaleInBytes)
 	"    
+	^ self subclassResponsibility
+
+]
+
+{ #category : #'operations - arithmetic' }
+JITAssembler >> sub: src2 from: src1AndDst [
+	self subclassResponsibility
+
+]
+
+{ #category : #'operations - logical' }
+JITAssembler >> xor: src1AndDst with: src2 [
 	^ self subclassResponsibility
 
 ]
