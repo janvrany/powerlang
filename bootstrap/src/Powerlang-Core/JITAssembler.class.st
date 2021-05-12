@@ -239,39 +239,33 @@ JITAssembler >> regV [
 ]
 
 { #category : #'operations - logical' }
-JITAssembler >> shiftLeft: srcAndDst by: shamt [
+JITAssembler >> shiftLeft: srcAndDst by: countReg [
 	self subclassResponsibility
-
 ]
 
 { #category : #'operations - logical' }
-JITAssembler >> shiftLeft: srcAndDst byImm: shamtImm [
+JITAssembler >> shiftLeft: srcAndDst byImm: count [
 	self subclassResponsibility
-
 ]
 
 { #category : #'operations - logical' }
-JITAssembler >> shiftRight: srcAndDst by: shamt [
+JITAssembler >> shiftRight: srcAndDst by: countReg [
 	self subclassResponsibility
-
 ]
 
 { #category : #'operations - logical' }
-JITAssembler >> shiftRight: srcAndDst byImm: shamtImm [
+JITAssembler >> shiftRight: srcAndDst byImm: count [
 	self subclassResponsibility
-
 ]
 
 { #category : #'operations - logical' }
-JITAssembler >> shiftRightArithmetic: srcAndDst by: shamt [
+JITAssembler >> shiftRightArithmetic: srcAndDst by: countReg [
 	self subclassResponsibility
-
 ]
 
 { #category : #'operations - logical' }
-JITAssembler >> shiftRightArithmetic: srcAndDst byImm: shamtImm [
+JITAssembler >> shiftRightArithmetic: srcAndDst byImm: count [
 	self subclassResponsibility
-
 ]
 
 { #category : #storing }

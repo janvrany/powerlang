@@ -773,39 +773,39 @@ AssemblerAMD64 >> setIntegerBit: op1 [
 ]
 
 { #category : #'operations - logical' }
-AssemblerAMD64 >> shiftLeft:srcAndDst by:shamt [
-	self assemble: 'sal' with: backend regT with: shamt   
-
+AssemblerAMD64 >> shiftLeft: srcAndDst by: countReg [
+	self ASSERT: countReg r = rcx.
+	self assemble: 'sal' with: srcAndDst with: countReg b
 ]
 
 { #category : #'operations - logical' }
-AssemblerAMD64 >> shiftLeft:srcAndDst byImm:shamtImm [
-	self assemble: 'sal' with: backend regT withImm: shamtImm   
-
+AssemblerAMD64 >> shiftLeft: srcAndDst byImm: count [
+	self ASSERT: (count between: 0 and: srcAndDst length - 1).
+	self assemble: 'sal' with: backend regT withImm: count
 ]
 
 { #category : #accessing }
-AssemblerAMD64 >> shiftRight: op1 by: op2 [
-	self ASSERT: (op2 isInteger not or: [op2 < op1 length]).
-	self assemble: 'sar' with: op1 with: op2
+AssemblerAMD64 >> shiftRight: srcAndDst by: countReg [
+	self ASSERT: countReg r = rcx.
+	self assemble: 'sar' with: srcAndDst with: countReg b
 ]
 
 { #category : #'operations - logical' }
-AssemblerAMD64 >> shiftRight:srcAndDst byImm:shamtImm [
-	self assemble: 'shr' with: srcAndDst withImm: shamtImm
-
+AssemblerAMD64 >> shiftRight: srcAndDst byImm: count [
+	self ASSERT: (count between: 0 and: srcAndDst length - 1).
+	self assemble: 'shr' with: srcAndDst withImm: count
 ]
 
 { #category : #'operations - logical' }
-AssemblerAMD64 >> shiftRightArithmetic:srcAndDst by:shamt [
-	self assemble: 'sar' with: srcAndDst with: shamt
-
+AssemblerAMD64 >> shiftRightArithmetic: srcAndDst by: countReg [
+	self ASSERT: countReg r = rcx.
+	self assemble: 'sar' with: srcAndDst with: countReg b
 ]
 
 { #category : #'operations - logical' }
-AssemblerAMD64 >> shiftRightArithmetic:srcAndDst byImm:shamtImm [
-	self assemble: 'sar' with: srcAndDst withImm: shamtImm   
-
+AssemblerAMD64 >> shiftRightArithmetic: srcAndDst byImm: count [
+	self ASSERT: (count between: 0 and: srcAndDst length - 1).
+	self assemble: 'sar' with: srcAndDst withImm: count
 ]
 
 { #category : #'private - jumps' }
