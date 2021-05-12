@@ -1,6 +1,6 @@
 Extension { #name : #Object }
 
-{ #category : '*Powerlang-Devtools-SmalltalkX' }
+{ #category : #'*Powerlang-Devtools-SmalltalkX' }
 Object class >> performedSelectors [
 	"Return a list of selectors in this class that are used 
 	 via `#perform:...`. 

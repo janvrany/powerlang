@@ -1,6 +1,11 @@
 Extension { #name : #OptimizingCodeEmitter }
 
-{ #category : '*Powerlang-Devtools-SmalltalkX' }
+{ #category : #'*Powerlang-Devtools-SmalltalkX' }
+OptimizingCodeEmitter >> assemblers [
+	^ assemblers
+]
+
+{ #category : #'*Powerlang-Devtools-SmalltalkX' }
 OptimizingCodeEmitter class >> performedSelectors [
 	| proto |
 

@@ -1,6 +1,6 @@
 Extension { #name : #ProtoObject }
 
-{ #category : '*Powerlang-Devtools-SmalltalkX' }
+{ #category : #'*Powerlang-Devtools-SmalltalkX' }
 ProtoObject class >> performedSelectors [
 	^ #()
 
